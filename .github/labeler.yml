@@ -1,44 +1,58 @@
 # Auto-labeling configuration for PRs based on changed files
+# Format for actions/labeler@v5
 
 # Python code changes
 python:
-  - '**/*.py'
+  - changed-files:
+    - any-glob-to-any-file: '**/*.py'
 
 # Tests
 tests:
-  - 'tests/**/*'
-  - '**/*_test.py'
-  - '**/test_*.py'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'tests/**/*'
+      - '**/*_test.py'
+      - '**/test_*.py'
 
 # CI/CD changes
 ci-cd:
-  - '.github/workflows/**'
-  - '.github/**'
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.github/workflows/**'
+      - '.github/**'
 
 # Security configuration
 security:
-  - '.gitleaks.toml'
-  - '.pre-commit-config.yaml'
-  - '.github/workflows/semgrep.yml'
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.gitleaks.toml'
+      - '.pre-commit-config.yaml'
+      - '.github/workflows/semgrep.yml'
 
 # Dependencies
 dependencies:
-  - 'requirements*.txt'
-  - 'setup.py'
-  - 'pyproject.toml'
-  - 'Pipfile'
-  - 'poetry.lock'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'requirements*.txt'
+      - 'setup.py'
+      - 'pyproject.toml'
+      - 'Pipfile'
+      - 'poetry.lock'
 
 # Documentation
 documentation:
-  - '**/*.md'
-  - 'docs/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - '**/*.md'
+      - 'docs/**/*'
 
 # Configuration
 configuration:
-  - '**/*.yml'
-  - '**/*.yaml'
-  - '**/*.toml'
-  - '**/*.ini'
-  - '**/*.cfg'
-  - '.pylintrc'
+  - changed-files:
+    - any-glob-to-any-file:
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.toml'
+      - '**/*.ini'
+      - '**/*.cfg'
+      - '.pylintrc'
