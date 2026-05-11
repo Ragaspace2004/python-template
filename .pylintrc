@@ -1,0 +1,31 @@
+[MASTER]
+jobs=1
+persistent=yes
+
+[MESSAGES CONTROL]
+disable=
+    C0111,  # missing-docstring
+    C0103,  # invalid-name
+    R0903,  # too-few-public-methods
+    W0511   # fixme
+
+[REPORTS]
+output-format=text
+reports=no
+score=yes
+
+[BASIC]
+good-names=i,j,k,ex,Run,_,id,db,app
+
+[DESIGN]
+max-args=7
+max-locals=15
+max-returns=6
+max-branches=12
+max-statements=50
+
+[SECURITY]
+enable=
+    W1201,  # logging-not-lazy
+    W1202,  # logging-format-interpolation
+    W1203   # logging-fstring-interpolation

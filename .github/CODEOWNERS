@@ -1,0 +1,19 @@
+# Python Project Code Owners
+
+# Global ownership
+* @your-team
+
+# DevSecOps & CI/CD
+/.github/ @devops-team
+/.pre-commit-config.yaml @devops-team
+/.gitleaks.toml @security-team
+
+# Python configuration
+*.py @python-team
+requirements*.txt @python-team
+setup.py @python-team
+pyproject.toml @python-team
+.pylintrc @python-team
+
+# Tests
+/tests/ @qa-team @python-team

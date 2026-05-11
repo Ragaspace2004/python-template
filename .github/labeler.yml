@@ -1,0 +1,44 @@
+# Auto-labeling configuration for PRs based on changed files
+
+# Python code changes
+python:
+  - '**/*.py'
+
+# Tests
+tests:
+  - 'tests/**/*'
+  - '**/*_test.py'
+  - '**/test_*.py'
+
+# CI/CD changes
+ci-cd:
+  - '.github/workflows/**'
+  - '.github/**'
+
+# Security configuration
+security:
+  - '.gitleaks.toml'
+  - '.pre-commit-config.yaml'
+  - '.github/workflows/semgrep.yml'
+
+# Dependencies
+dependencies:
+  - 'requirements*.txt'
+  - 'setup.py'
+  - 'pyproject.toml'
+  - 'Pipfile'
+  - 'poetry.lock'
+
+# Documentation
+documentation:
+  - '**/*.md'
+  - 'docs/**/*'
+
+# Configuration
+configuration:
+  - '**/*.yml'
+  - '**/*.yaml'
+  - '**/*.toml'
+  - '**/*.ini'
+  - '**/*.cfg'
+  - '.pylintrc'
