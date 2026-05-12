@@ -8,7 +8,7 @@ This document describes the complete user flow for the Python DevSecOps CI pipel
 ## 1. Normal Development Flow
 
 ### 1.1 Developer Writes Code
-**Actor:** Developer  
+**Actor:** Developer
 **Action:** Creates or modifies Python code in local environment
 
 **Next Steps:**
@@ -18,8 +18,8 @@ This document describes the complete user flow for the Python DevSecOps CI pipel
 ---
 
 ### 1.2 Pre-commit Hooks Execution (Local)
-**Trigger:** `git commit`  
-**Location:** Developer's local machine  
+**Trigger:** `git commit`
+**Location:** Developer's local machine
 **Configuration:** `.pre-commit-config.yaml`
 
 #### Checks Performed (Sequential):
@@ -61,8 +61,9 @@ This document describes the complete user flow for the Python DevSecOps CI pipel
 ---
 
 ### 1.3 Push Code to Repository
-**Actor:** Developer  
+**Actor:** Developer
 **Action:** `git push origin <branch>`
+
 
 **Triggers:**
 - GitHub Actions CI workflows
@@ -73,7 +74,7 @@ This document describes the complete user flow for the Python DevSecOps CI pipel
 ### 1.4 GitHub Actions CI Pipeline
 
 #### Workflow 1: Pre-commit CI (`precommit.yml`)
-**Trigger:** Push or Pull Request to any branch  
+**Trigger:** Push or Pull Request to any branch
 **Timeout:** 10 minutes
 
 **Auto-Labeling:**
@@ -136,7 +137,7 @@ This document describes the complete user flow for the Python DevSecOps CI pipel
 ---
 
 ### 1.5 Dependabot Dependency Checks
-**Trigger:** Weekly schedule or new dependency detected  
+**Trigger:** Weekly schedule or new dependency detected
 **Configuration:** `.github/dependabot.yml`
 
 **Auto-Labeling:**
@@ -158,7 +159,7 @@ This document describes the complete user flow for the Python DevSecOps CI pipel
 ---
 
 ### 1.6 Code Review
-**Trigger:** Pull Request opened  
+**Trigger:** Pull Request opened
 **Configuration:** `.github/CODEOWNERS`
 
 **Required Reviewers (based on files changed):**
@@ -180,7 +181,7 @@ This document describes the complete user flow for the Python DevSecOps CI pipel
 ---
 
 ### 1.7 Merge to Main Branch
-**Actor:** Developer or Maintainer  
+**Actor:** Developer or Maintainer
 **Action:** Merge approved PR
 
 **Post-Merge:**
@@ -298,7 +299,7 @@ This document describes the complete user flow for the Python DevSecOps CI pipel
    ```
    # Ignore specific files
    path/to/file.py
-   
+
    # Ignore specific rules
    # ruleid: rule-name
    ```
@@ -455,10 +456,10 @@ Approved by: @security-lead"
    ```bash
    # Run tests
    pytest
-   
+
    # Run security scan
    bandit -r . -ll
-   
+
    # Check for secrets
    gitleaks detect --verbose
    ```
@@ -768,9 +769,9 @@ pytest -v --tb=short
 
 ### 7.2 Escalation Path
 
-**Level 1:** Team lead (immediate team)  
-**Level 2:** Engineering manager  
-**Level 3:** Security officer (for security overrides)  
+**Level 1:** Team lead (immediate team)
+**Level 2:** Engineering manager
+**Level 3:** Security officer (for security overrides)
 **Level 4:** CTO (for compliance/regulatory issues)
 
 ### 7.3 Emergency Contacts
@@ -880,10 +881,10 @@ git commit --no-verify -m "EMERGENCY: description"
 
 ## Document Control
 
-**Version:** 1.0  
-**Last Updated:** 2024  
-**Owner:** DevOps Team  
-**Review Cycle:** Quarterly  
+**Version:** 1.0
+**Last Updated:** 2024
+**Owner:** DevOps Team
+**Review Cycle:** Quarterly
 **Next Review:** [Date]
 
 ---
