@@ -26,3 +26,35 @@ jobs:
 
       - name: Run Semgrep
         run: semgrep --config auto --error
+
+      - name: Label PR on security findings
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              labels: ['security-findings', 'semgrep-failed', 'bot']
+            });
+
+            // Add comment with details
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: '⚠️ **Semgrep Security Scan Failed**\n\nSecurity issues were detected. Please review the workflow logs and address the findings.'
+            });
+
+      - name: Label PR on success
+        if: success() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              labels: ['security-passed', 'bot']
+            });
