@@ -1,5 +1,7 @@
 name: Semgrep pipeline
 
+run-name: "Semgrep Security Scan [Bot] - ${{ github.event_name }} by ${{ github.actor }}"
+
 on:
   push:
     branches: [main, dev, uat]

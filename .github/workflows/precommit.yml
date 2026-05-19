@@ -1,5 +1,7 @@
 name: Pre-commit CI
 
+run-name: "Pre-commit CI [Bot] - ${{ github.event_name }} by ${{ github.actor }}"
+
 on:
   push:
   pull_request:
