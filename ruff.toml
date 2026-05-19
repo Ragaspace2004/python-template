@@ -1,0 +1,52 @@
+# Ruff configuration file
+# Replaces Pylint + Black + isort
+
+line-length = 100
+target-version = "py311"
+
+# Enable specific rule sets
+lint.select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes
+    "I",      # isort (import sorting)
+    "N",      # pep8-naming
+    "UP",     # pyupgrade
+    "B",      # flake8-bugbear
+    "A",      # flake8-builtins
+    "C4",     # flake8-comprehensions
+    "PIE",    # flake8-pie
+    "SIM",    # flake8-simplify
+    "RUF",    # Ruff-specific rules
+]
+
+# Ignore specific rules
+lint.ignore = [
+    "E501",   # Line too long (handled by formatter)
+    "S101",   # Use of assert (allowed in tests)
+    "S104",   # Possible binding to all interfaces
+]
+
+# Exclude files/directories
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".ruff_cache",
+    "build",
+    "dist",
+    "check",
+]
+
+[lint.per-file-ignores]
+"tests/**" = ["S101"]  # Allow assert in tests
+"__init__.py" = ["F401"]  # Allow unused imports in __init__.py
+
+[format]
+# Formatter configuration (replaces Black)
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+skip-magic-trailing-comma = false

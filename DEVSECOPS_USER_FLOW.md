@@ -30,15 +30,17 @@ This document describes the complete user flow for the Python DevSecOps CI pipel
    - YAML validation
    - XML validation
 
-2. **Black Formatter** (BLOCKING)
-   - Auto-formats Python code
-   - Ensures consistent code style
-   - **Failure Action:** Commit blocked, files auto-formatted, developer must re-stage
+2. **Ruff Linter** (BLOCKING)
+   - Fast Python linting (replaces Pylint)
+   - Auto-fixes common issues
+   - Checks 700+ rules
+   - **Failure Action:** Commit blocked if issues found
 
-3. **Pylint** (NON-BLOCKING - Optional)
-   - Code quality analysis
-   - Uses `.pylintrc` configuration
-   - **Failure Action:** Warning displayed, commit proceeds (`--exit-zero`)
+3. **Ruff Formatter** (BLOCKING)
+   - Auto-formats Python code (replaces Black)
+   - Ensures consistent code style
+   - Sorts imports automatically (replaces isort)
+   - **Failure Action:** Commit blocked, files auto-formatted, developer must re-stage
 
 4. **Bandit Security Scan** (BLOCKING)
    - Scans for security vulnerabilities
@@ -195,27 +197,22 @@ This document describes the complete user flow for the Python DevSecOps CI pipel
 
 ### 2.1 Pre-commit Hook Failures
 
-#### Edge Case: Black Formatter Conflicts
-**Scenario:** Black reformats code differently than developer's style
+#### Edge Case: Ruff False Positives
+**Scenario:** Ruff flags valid code patterns
 
 **Handling:**
-1. Let Black auto-format the code
-2. Review changes: `git diff`
-3. Re-stage files: `git add <files>`
-4. Commit again
+1. Review Ruff output
+2. If false positive, add inline comment: `# noqa: <rule-code>`
+3. Or update `pyproject.toml` to disable rule globally
+4. Commit proceeds
 
-**Prevention:** Configure editor to use Black on save
+**Example:**
+```python
+# This is intentional
+x = eval(user_input)  # noqa: S307
+```
 
----
-
-#### Edge Case: Pylint False Positives
-**Scenario:** Pylint flags valid code patterns
-
-**Handling:**
-1. Review Pylint output (non-blocking)
-2. If false positive, add inline comment: `# pylint: disable=<rule-id>`
-3. Or update `.pylintrc` to disable rule globally
-4. Commit proceeds regardless
+**Prevention:** Configure Ruff rules in `pyproject.toml`
 
 ---
 
@@ -829,8 +826,7 @@ pytest -v --tb=short
 
 - Python: 3.11
 - Pre-commit: Latest
-- Black: 23.7.0
-- Pylint: Latest
+- Ruff: v0.4.2 (replaces Pylint + Black + isort)
 - Bandit: Latest
 - Pytest: Latest
 - Gitleaks: v8.18.2
@@ -867,11 +863,11 @@ bandit -r . -ll
 # Check for secrets
 gitleaks detect --verbose
 
-# Format code
-black .
+# Lint and format code with Ruff
+ruff check . --fix
 
-# Lint code
-pylint **/*.py
+# Format code
+ruff format .
 
 # Emergency commit (use sparingly!)
 git commit --no-verify -m "EMERGENCY: description"

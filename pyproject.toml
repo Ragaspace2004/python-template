@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-template"
+version = "0.1.0"
+description = "Python DevSecOps CI Pipeline Template"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+# Pytest configuration
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+addopts = "-v --tb=short"

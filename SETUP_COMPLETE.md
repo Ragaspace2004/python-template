@@ -6,13 +6,13 @@
 ✅ Trailing whitespace removal
 ✅ End-of-file fixer
 ✅ YAML/XML validation
-✅ Black code formatter
-✅ Pylint (optional, non-blocking)
+✅ Ruff linting (replaces Pylint)
+✅ Ruff formatting (replaces Black + isort)
 ✅ Bandit security scanner
 ✅ Gitleaks secret detection
 ✅ Pytest test runner
 
-**Configuration:** `.pre-commit-config.yaml`
+**Configuration:** `.pre-commit-config.yaml` and `pyproject.toml`
 
 ### 2. GitHub Actions Workflows
 
@@ -122,8 +122,11 @@ bandit -r . -ll
 # Check for secrets
 gitleaks detect --verbose
 
-# Format code
-black .
+# Lint and fix code with Ruff
+ruff check . --fix
+
+# Format code with Ruff
+ruff format .
 ```
 
 ### Emergency Procedures

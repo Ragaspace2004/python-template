@@ -2,8 +2,6 @@
 Security-related tests to demonstrate security testing practices.
 """
 
-import pytest
-
 
 def test_no_hardcoded_secrets():
     """Ensure no hardcoded secrets in test data."""

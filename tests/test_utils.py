@@ -10,7 +10,7 @@ def test_data_validation():
 
     def validate_positive_number(value):
         """Validate positive number."""
-        if not isinstance(value, (int, float)):
+        if not isinstance(value, int | float):
             raise TypeError("Value must be a number")
         if value <= 0:
             raise ValueError("Value must be positive")
