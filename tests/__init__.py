@@ -1,3 +1,1 @@
-"""
-Tests package for Python DevSecOps CI pipeline.
-"""
+"""Tests package."""

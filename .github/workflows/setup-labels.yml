@@ -1,5 +1,4 @@
 name: Setup Repository Labels 🏷️
-
 # Run manually or on first setup
 on:
   workflow_dispatch:

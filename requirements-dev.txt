@@ -1,0 +1,21 @@
+# Development and CI/CD dependencies
+# Pin versions to ensure reproducible builds
+
+# Pre-commit framework
+pre-commit==4.0.1
+
+# Linting and formatting
+ruff==0.8.4
+
+# Security scanning
+bandit==1.8.0
+
+# Testing
+pytest==8.3.4
+pytest-cov==6.0.0
+
+# Type checking
+mypy==1.13.0
+
+# Code coverage
+coverage==7.6.9

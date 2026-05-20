@@ -13,3 +13,34 @@ requires-python = ">=3.11"
 testpaths = ["tests"]
 python_files = ["test_*.py", "*_test.py"]
 addopts = "-v --tb=short"
+
+[tool.bandit]
+# Bandit security scanner configuration
+exclude_dirs = [
+    "tests",
+    ".venv",
+    "venv",
+    ".git",
+    "__pycache__",
+]
+skips = [
+    "B101",  # assert_used - Allow assert in tests
+]
+# Severity levels: LOW, MEDIUM, HIGH
+# Confidence levels: LOW, MEDIUM, HIGH
+# Only report MEDIUM and HIGH severity issues
+severity = "MEDIUM"
+
+[tool.mypy]
+# Mypy type checker configuration
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false  # Set to true for stricter checking
+ignore_missing_imports = true
+show_error_codes = true
+exclude = [
+    "tests",
+    ".venv",
+    "venv",
+]
