@@ -62,7 +62,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.pull_request.number,
-              labels: ['ci-failed', 'bot']
+              labels: ['ci-failed', 'pre-commit']
             });
 
       - name: Label PR on success
@@ -74,5 +74,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.pull_request.number,
-              labels: ['ci-passed', 'ready-for-review', 'bot']
+              labels: ['ci-passed', 'ready-for-review', 'pre-commit']
             });

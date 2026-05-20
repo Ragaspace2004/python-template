@@ -16,8 +16,9 @@ jobs:
         with:
           script: |
             const labels = [
-              // Bot Labels
-              { name: 'bot', color: '6f42c1', description: 'Automated bot action' },
+              // Workflow Labels
+              { name: 'pre-commit', color: '1d76db', description: 'Pre-commit CI workflow' },
+              { name: 'semgrep', color: 'b60205', description: 'Semgrep security scan workflow' },
 
               // CI/CD Labels
               { name: 'ci-passed', color: '0e8a16', description: 'All CI checks passed' },
