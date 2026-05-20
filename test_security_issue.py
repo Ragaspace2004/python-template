@@ -10,4 +10,5 @@ os.system("ls -la")
 
 # This should trigger Bandit warning: B307 (eval usage)
 user_input = "print('hello')"
-print(user_input)
+print(user_input + "")
+print("The value printed successfully")
