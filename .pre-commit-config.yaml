@@ -14,15 +14,18 @@ repos:
     hooks:
       # Linting
       - id: ruff
+        name: ruff 🧹
         args: ["check", "--fix"]
       # Formatting
       - id: ruff-format
+        name: ruff-format 🧹
+
 
   # Python security linting with Bandit (BLOCKS commits on security issues)
   - repo: local
     hooks:
       - id: bandit
-        name: bandit (security)
+        name: bandit (security) 🔎
         entry: python -m bandit
         language: system
         types: [python]
@@ -34,13 +37,14 @@ repos:
     rev: v8.18.2
     hooks:
       - id: gitleaks
+        name: gitleaks 🔑
         args: ["--verbose", "--config=.gitleaks.toml"]
 
   # Python tests
   - repo: local
     hooks:
       - id: pytest
-        name: pytest
+        name: pytest 🧪
         entry: pytest
         language: system
         types: [python]

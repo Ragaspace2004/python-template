@@ -1,6 +1,6 @@
-name: Semgrep pipeline
+name: Semgrep pipeline 🔎
 
-run-name: "Semgrep Security Scan [Bot] - ${{ github.event_name }} by ${{ github.actor }}"
+run-name: "Semgrep Security Scan - ${{ github.event_name }} by ${{ github.actor }}"
 
 on:
   push:
@@ -38,7 +38,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.pull_request.number,
-              labels: ['security-findings', 'semgrep-failed', 'bot']
+              labels: ['security-findings', 'semgrep-failed', 'semgrep']
             });
 
             // Add comment with details
@@ -58,5 +58,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.pull_request.number,
-              labels: ['security-passed', 'bot']
+              labels: ['security-passed', 'semgrep']
             });
