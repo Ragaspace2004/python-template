@@ -1,6 +1,6 @@
-name: Pre-commit CI
+name: Pre-commit CI 🧪
 
-run-name: "Pre-commit CI [Bot] - ${{ github.event_name }} by ${{ github.actor }}"
+run-name: "Pre-commit CI- ${{ github.event_name }} by ${{ github.actor }}"
 
 on:
   push:
@@ -39,14 +39,13 @@ jobs:
           path: ~/.cache/pre-commit
           key: ${{ runner.os }}-precommit-${{ hashFiles('.pre-commit-config.yaml') }}
 
-      - name: Run pre-commit
+      - name: Run pre-commit 🧪
         run: pre-commit run --all-files --show-diff-on-failure
 
-      - name: Run Bandit security scan
+      - name: Run Bandit security scan 🔎
         run: bandit -r . -ll -f json -o bandit-report.json || bandit -r . -ll
-        continue-on-error: true
 
-      - name: Upload security report
+      - name: Upload security report 📄
         if: always()
         uses: actions/upload-artifact@v4
         with:
