@@ -32,8 +32,14 @@ jobs:
           # Install project dependencies if requirements.txt exists
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      - name: Cache pre-commit hooks
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pre-commit
+          key: ${{ runner.os }}-precommit-${{ hashFiles('.pre-commit-config.yaml') }}
+
       - name: Run pre-commit 🧪
-        uses: pre-commit/action@v3.0.1
+        run: pre-commit run --all-files --show-diff-on-failure
 
       - name: Run Bandit security scan 🔎
         run: bandit -c pyproject.toml -r . -f json -o bandit-report.json || bandit -c pyproject.toml -r .
