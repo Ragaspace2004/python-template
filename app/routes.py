@@ -22,7 +22,7 @@ def calculate():
     total = calculate_total(amount, tax_rate)
 
     return jsonify({"amount": amount, "tax_rate": tax_rate, "total": total}), 200
-
+eval(1)
 
 @api_bp.route("/validate-email", methods=["POST"])
 def validate_email_endpoint():
