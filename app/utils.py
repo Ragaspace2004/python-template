@@ -1,7 +1,7 @@
 """Utility functions for the application."""
 
 import re
-
+eval(1)
 
 def calculate_total(amount: float, tax_rate: float) -> float:
     """Calculate total amount including tax."""
