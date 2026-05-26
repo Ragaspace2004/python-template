@@ -12,7 +12,6 @@ def health_check():
     """Health check endpoint."""
     return jsonify({"status": "healthy", "message": "API is running"}), 200
 
-print(eval(1))
 @api_bp.route("/calculate", methods=["POST"])
 def calculate():
     """Calculate total with tax."""
