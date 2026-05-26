@@ -28,7 +28,7 @@ repos:
         name: mypy 🔍
         args: ["--ignore-missing-imports", "--show-error-codes"]
 
-  # Python security linting with Bandit (BLOCKS commits on security issues)
+  # Python SAST with Bandit (BLOCKS commits on security issues)
   - repo: local
     hooks:
       - id: bandit

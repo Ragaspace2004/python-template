@@ -1,47 +1,16 @@
-def calculate(x, y):
-    """This function has several problems"""
-    if x is None:
-        return "error"
+"""Main entry point for the Flask application."""
 
-    result = x + y * 2
-    print("Result is: " + str(result))
+import os
 
-    # Unused variable
-    # unused_var = 42
+from app import create_app
 
-    # Old style dict creation
-    # data = dict(name="John", age=30)
+app = create_app()
 
-    # Redundant code
-    # if len(data) > 0:
-    #     pass
+if __name__ == "__main__":
+    # Get host from environment variable, default to localhost for security
+    # Use 0.0.0.0 only in development/Docker environments
+    host = os.getenv("API_HOST", "127.0.0.1")
+    port = int(os.getenv("API_PORT", "5000"))
+    debug = os.getenv("FLASK_ENV", "production") == "development"
 
-    return result
-
-
-# Global variable used without declaration
-counter = 0
-
-
-# def increment():
-#     counter += 1  # UnboundLocalError style issue
-#     return counter
-
-
-class User:
-    def __init__(self, name):
-        self.name = name
-
-    def greet(self):
-        print(f"Hello {self.name}")
-
-
-# Bad practices
-user = User("Alice")
-user.greet()
-
-# Unused import
-
-# Syntax / style issues
-my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-very_long_line = "This is a very long string that should probably be broken into multiple lines because it exceeds the maximum line length most teams use"
+    app.run(debug=debug, host=host, port=port)  # nosec B104
