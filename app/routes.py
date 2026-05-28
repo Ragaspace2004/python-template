@@ -7,6 +7,18 @@ from app.utils import calculate_total, validate_email
 api_bp = Blueprint("api", __name__, url_prefix="/api")
 
 
+@api_bp.route("/calculate-tax", methods=["POST"])
+def calculate_tax():
+    """Calculate total with tax."""
+    data = request.get_json()
+    amount = data.get("amount", 0)
+    tax_rate = data.get("tax_rate", 0.1)
+
+    total = calculate_total(amount, tax_rate)
+
+    return jsonify({"amount": amount, "tax_rate": tax_rate, "total": total}), 200
+
+
 @api_bp.route("/health", methods=["GET"])
 def health_check():
     """Health check endpoint."""
